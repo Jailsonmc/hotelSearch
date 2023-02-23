@@ -2,15 +2,11 @@
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Slim\Factory\AppFactory;
+use Hotels\xlr8\Controller\HotelController;
 
 $app = AppFactory::create();
 
-$app->get('/', function (RequestInterface $request, ResponseInterface $response, array $args) {
-    $response->getBody()->write('Hello World!');
-    return $response;
-});
+$app->get('/', [HotelController::class, 'index']);
 
 $app->run();
