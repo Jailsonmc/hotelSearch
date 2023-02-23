@@ -14,7 +14,8 @@
     "require": {
         "php": "^8.0",
         "slim/slim": "^4.8",
-        "laminas/laminas-diactoros": "^2.6"
+        "laminas/laminas-diactoros": "^2.6",
+        "php-di/php-di": "^7.0"
     },
     "scripts": {
         "server": "php -S localhost:8000 -t public"
