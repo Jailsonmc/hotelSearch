@@ -1,0 +1,25 @@
+{
+    "name": "jailsonmc/xlr8",
+    "autoload": {
+        "psr-4": {
+            "Hotels\\xlr8\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jailson Cavalcanti",
+            "email": "jailsonmc@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "slim/slim": "^4.8",
+        "laminas/laminas-diactoros": "^2.6"
+    },
+    "scripts": {
+        "server": "php -S localhost:8000 -t public"
+    },
+    "config": {
+        "process-timeout": 0
+    }
+}
