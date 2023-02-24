@@ -15,19 +15,14 @@ class HotelController
         $this->hotelService = $container->get('hotelService');
     }
 
-    public function index(Request $request, Response $response, $args)
-    {
-        $response->getBody()->write($this->hotelService->hello());
-        return $response;
-    }
-
     public function getNearbyHotelsController(Request $request, Response $response, $args)
     {
         $latitude = $request->getAttribute('latitude');
         $longitude = $request->getAttribute('longitude');
         $order = $request->getAttribute('order');
 
-        $response->getBody()->write($this->hotelService->getNearbyHotelsService($latitude, $longitude, $order));
+        $response->getBody()->write(json_encode($this->hotelService->getNearbyHotelsService($latitude, $longitude, $order)));
         return $response;
+
     }
 }

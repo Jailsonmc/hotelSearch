@@ -8,8 +8,6 @@ use Hotels\xlr8\Controller\HotelController;
 
 $app = AppFactory::createFromContainer($container);
 
-$app->get('/', [HotelController::class, 'index']);
-
 $app->get('/getNearbyHotels/{latitude}/{longitude}/{order}', [HotelController::class, 'getNearbyHotelsController']);
 
 $app->run();
