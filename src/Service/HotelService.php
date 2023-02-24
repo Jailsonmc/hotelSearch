@@ -13,8 +13,13 @@ class HotelService
         $this->container = $container;
     }
 
-    public function getNearbyHotels()
+    public function hello()
     {
         return "Hello World!";
+    } 
+
+    public function getNearbyHotelsService($latitude, $longitude, $order)
+    {
+        return "Hello World!: $latitude $longitude $order";
     }
 }

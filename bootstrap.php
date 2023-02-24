@@ -11,7 +11,7 @@ $container->set('hotelService', function ($container) {
     return new HotelService($container);
 });
 
-$container->set('hotelController', function ($container) {
+$container->set('Hotels\xlr8\Controller\HotelController', function ($container) {
     return new HotelController($container);
 });
 
