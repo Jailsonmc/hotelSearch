@@ -79,15 +79,16 @@ class HotelService
 
     private function order(&$list, $order) {
 
-        if (!$order || $order == "" || $order == "proximity") {
-            usort($list, function ($a, $b) {
-                return $a[1] - $b[1];
-            });
+        $number = 1;
+        if ($order == "proximity") {
+            $number = 1;
         } else if ($order == "pricepernight") {
-            usort($list, function ($a, $b) {
-                return $a[2] - $b[2];
-            });
+            $number = 2;
         }
+
+        usort($list, function ($a, $b) use ($number) {
+            return $a[$number] - $b[$number];
+        });
 
     }
 

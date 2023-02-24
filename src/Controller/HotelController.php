@@ -26,9 +26,7 @@ class HotelController
             return $response->withStatus(400);
         }
 
-        if (!$order) {
-            $order = 'proximity';
-        }
+        $order = $args['order'] ?? 'proximity';
 
         $response->getBody()->write(json_encode($this->hotelService->getNearbyHotelsService($latitude, $longitude, $order)));
         return $response;
