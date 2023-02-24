@@ -21,6 +21,15 @@ class HotelController
         $longitude = $request->getAttribute('longitude');
         $order = $request->getAttribute('order');
 
+        if (!$latitude || !$longitude) {
+            $response->getBody()->write(json_encode(['error' => 'Latitude and longitude are required.']));
+            return $response->withStatus(400);
+        }
+
+        if (!$order) {
+            $order = 'proximity';
+        }
+
         $response->getBody()->write(json_encode($this->hotelService->getNearbyHotelsService($latitude, $longitude, $order)));
         return $response;
 
