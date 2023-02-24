@@ -2,6 +2,7 @@
 
 namespace Hotels\xlr8\Controller;
 
+use Hotels\xlr8\Util\UtilConstants as UtilConstants;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -28,7 +29,9 @@ class HotelController
 
         $order = $args['order'] ?? 'proximity';
 
-        $response->getBody()->write(json_encode($this->hotelService->getNearbyHotelsService($latitude, $longitude, $order)));
+        $orderNumber = UtilConstants::order[$order];
+
+        $response->getBody()->write(json_encode($this->hotelService->getNearbyHotelsService($latitude, $longitude, $orderNumber)));
         return $response;
 
     }

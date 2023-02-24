@@ -2,6 +2,7 @@
 
 namespace Hotels\xlr8\Service;
 
+use Hotels\xlr8\Util\UtilConstants;
 use Psr\Container\ContainerInterface;
 
 class HotelService
@@ -16,10 +17,7 @@ class HotelService
     public function getNearbyHotelsService($latitude, $longitude, $order)
     {
 
-        $urls = array(
-            'https://xlr8-interview-files.s3.eu-west-2.amazonaws.com/source_1.json',
-            'https://xlr8-interview-files.s3.eu-west-2.amazonaws.com/source_2.json'
-        );
+        $urls = UtilConstants::urls;
 
         $mh = curl_multi_init();
         $handles = array();
@@ -79,15 +77,8 @@ class HotelService
 
     private function order(&$list, $order) {
 
-        $number = 1;
-        if ($order == "proximity") {
-            $number = 1;
-        } else if ($order == "pricepernight") {
-            $number = 2;
-        }
-
-        usort($list, function ($a, $b) use ($number) {
-            return $a[$number] - $b[$number];
+        usort($list, function ($a, $b) use ($order) {
+            return $a[$order] - $b[$order];
         });
 
     }
